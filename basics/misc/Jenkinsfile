@@ -19,10 +19,10 @@ node {
      }
    }
    stage('docker run') {
-     sh label: '', script: '''docker rm docker_test || true
-      docker run --rm -tid --name docker_test -p 3000 timido/docker-nodejs-demo:latest
+     sh label: '', script: """docker rm docker_test || true
+      docker run --rm -tid --name docker_test -p 3000 timido/docker-nodejs-demo:${commit_id}
       docker kill docker_test || true
-      
-      '''
+      """
      }
    }
+}
